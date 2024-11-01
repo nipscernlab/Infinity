@@ -1,0 +1,11 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.nipscern.infinitymanager
+productName: Infinity Manager
+win:
+  target: nsis
+  icon: icons/infinity_77973-3.ico
+  artifactName: ${Infinity Manager}-Setup-${1.0.0}.${ext}
+files: []
+electronVersion: 33.0.2

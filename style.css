@@ -1,0 +1,368 @@
+:root {
+    /* Light theme */
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --accent-primary: #3b82f6;
+    --accent-secondary: #60a5fa;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --border: #e5e7eb;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #a3a3a3;
+    --accent-primary: #60a5fa;
+    --accent-secondary: #3b82f6;
+    --border: #404040;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 4.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.download-card {
+    background-color: var(--bg-secondary);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.download-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px -1px rgb(0 0 0 / 0.15);
+}
+
+.download-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.download-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.status {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    transition: width 0.3s ease;
+}
+
+.size-info {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+button {
+    padding: 0.625rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+button svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+.download-btn {
+    background-color: var(--accent-primary);
+    color: white;
+}
+
+.download-btn:hover {
+    background-color: var(--accent-secondary);
+}
+
+.pause-btn {
+    background-color: var(--warning);
+    color: white;
+}
+
+.resume-btn {
+    background-color: var(--success);
+    color: white;
+}
+
+.install-btn {
+    background-color: var(--accent-primary);
+    color: white;
+}
+
+button:disabled {
+    background-color: var(--border);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+}
+.top-right-container {
+    position: fixed;
+    top: 0.9rem;
+    right: 5rem; /* Adjusted for responsiveness */
+    display: flex;
+    align-items: center;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.command-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem; /* Add some padding for better touch targets */
+    transition: transform 0.2s; /* Smooth scaling effect */
+}
+
+.command-button:hover {
+    transform: scale(1.1); /* Scale up on hover for a nice effect */
+}
+
+.comms {
+    width: 40px;
+    height: auto;
+}
+
+.search-container {
+    position: relative;
+    height: 30px; /* Increased height for better touch area */
+    margin-left: 10px; /* Space between icon and search input */
+}
+
+.search-input {
+    width: 0; /* Start with 0 width */
+    height: 100%;
+    background-color: white;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 0 1.5px; /* Padding for text */
+    transition: width 0.3s ease;
+    outline: none;
+    font-size: 14px; /* Adjust font size for better readability */
+}
+
+/* Show the search input when the button is hovered */
+.top-right-container:hover .search-input {
+    width: 200px; /* Adjust width as needed */
+}
+
+/* Add media query for responsiveness */
+@media (max-width: 768px) {
+    .top-right-container {
+        right: 0.5rem; /* Adjust right position for smaller screens */
+    }
+    .search-input {
+        width: 150px; /* Adjust width for smaller screens */
+    }
+}
+
+
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+}
+
+.theme-switch {
+    background: none;
+    border: 1px solid var(--border);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--text-primary);
+}
+
+.theme-switch:hover {
+    background-color: var(--border);
+}
+
+.theme-switch svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.sun-icon {
+    display: none;
+}
+
+[data-theme="dark"] .sun-icon {
+    display: block;
+}
+
+[data-theme="dark"] .moon-icon {
+    display: none;
+}
+
+.clear-downloads-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff4c4c; /* Red background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.clear-downloads-button:hover {
+    background-color: #ff1a1a; /* Darker red on hover */
+}
+
+.open-folder-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333; /* Red background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.open-folder-button:hover {
+    background-color: darkgray; /* Darker red on hover */
+}
+
+.software-details {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #747272; /* Change color as needed */
+}
+
+.software-details p {
+    margin: 5px 0;
+}
+
+.software-details a {
+    color: #007BFF; /* Bootstrap primary color */
+    text-decoration: none;
+}
+
+.software-details a:hover {
+    text-decoration: underline;
+}
+
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 12px; /* Height of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #8B0000; /* Thumb color */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* No background for the track */
+    border-radius: 6px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #cc0000; /* Darker shade on hover */
+}
+
+
+h1, .material-symbols-outlined { 
+    font-size: 4.5rem;
+    background-image: linear-gradient(90deg, 
+        #ff0000 0%,    /* Goldenrod */
+        #920a00 30%,   /* Gold */
+        #a80101e3 50%,   /* Lemon Chiffon */
+        #6d0505 70%,   /* Lemon Chiffon */
+        #ff0000 85%,   /* Papaya Whip */
+        #ff0000 100%   /* Papaya Whip */
+    );
+    -webkit-background-clip: text; 
+    background-clip: text; 
+    color: transparent;
+    background-size: 300%;
+    background-position: -100%;  
+    animation: animatedText 8s infinite alternate-reverse;
+}
+
+
+@keyframes animatedText {
+    to {
+        background-position: 100%; 
+    }
+}
