@@ -122,6 +122,8 @@ Please report bugs through our GitHub issues page including:
 - Remote deployment support
 - Multi-language support
 
+## License
+Working on it!
 
 ## Acknowledgments
 
